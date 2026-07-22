@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohamed El Khair — Data Analyst / Data Engineering Candidate</title>
+<meta name="description" content="Portfolio of Mohamed El Khair — Data Analyst and Data Engineering candidate based in Houston, TX. SQL, Python, ETL pipelines, and logistics data projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0F1B2B;
+    --bg-elevated: #16273D;
+    --bg-elevated-2: #1C3049;
+    --accent: #E8912D;
+    --accent-soft: rgba(232,145,45,0.14);
+    --secondary: #6C8AAE;
+    --teal: #46B8A4;
+    --text: #EDEAE3;
+    --text-dim: #9FB0C3;
+    --text-faint: #6C7C93;
+    --border: rgba(237,234,227,0.10);
+    --border-strong: rgba(237,234,227,0.20);
+    --font-display: 'IBM Plex Mono', 'Consolas', monospace;
+    --font-body: 'Inter', -apple-system, sans-serif;
+    --radius: 10px;
+    --max-w: 1120px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+      radial-gradient(circle at 20% 8%, rgba(232,145,45,0.06), transparent 40%),
+      radial-gradient(circle at 85% 15%, rgba(70,184,164,0.07), transparent 45%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .wrap{max-width:var(--max-w); margin:0 auto; padding:0 28px; position:relative; z-index:1;}
+
+  a{color:inherit; text-decoration:none;}
+
+  .mono{font-family:var(--font-display);}
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(15,27,43,0.85);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px; max-width:var(--max-w); margin:0 auto;
+  }
+  .nav-logo{
+    font-family:var(--font-display); font-weight:600; font-size:15px;
+    letter-spacing:0.02em; color:var(--text);
+    display:flex; align-items:center; gap:8px;
+  }
+  .nav-logo .dot{width:8px; height:8px; border-radius:50%; background:var(--accent); display:inline-block;}
+  .nav-links{display:flex; align-items:center; gap:28px; font-size:14px;}
+  .nav-links a{color:var(--text-dim); transition:color 0.2s ease; position:relative;}
+  .nav-links a:hover{color:var(--accent);}
+  .nav-links a:focus-visible, a:focus-visible, button:focus-visible{
+    outline:2px solid var(--accent); outline-offset:3px; border-radius:2px;
+  }
+  .nav-cta{
+    font-family:var(--font-display); font-size:13px; font-weight:500;
+    padding:9px 16px; border:1px solid var(--border-strong); border-radius:6px;
+    color:var(--text); transition:all 0.2s ease; white-space:nowrap;
+  }
+  .nav-cta:hover{border-color:var(--accent); color:var(--accent); background:var(--accent-soft);}
+  .nav-toggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:88px 0 72px;
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+  }
+  .eyebrow{
+    font-family:var(--font-display); font-size:12.5px; color:var(--accent);
+    letter-spacing:0.14em; text-transform:uppercase; margin-bottom:20px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:""; width:22px; height:1px; background:var(--accent);}
+  .hero h1{
+    font-size:clamp(34px, 4.6vw, 54px); font-weight:800; line-height:1.08;
+    letter-spacing:-0.02em; color:var(--text); margin-bottom:22px;
+  }
+  .hero h1 .hl{color:var(--accent);}
+  .hero p.lede{
+    font-size:17px; color:var(--text-dim); max-width:520px; margin-bottom:32px;
+  }
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--font-display); font-size:13.5px; font-weight:500;
+    padding:13px 22px; border-radius:6px; transition:all 0.2s ease;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-primary{background:var(--accent); color:#1A1103; font-weight:600;}
+  .btn-primary:hover{background:#F5A238; transform:translateY(-1px);}
+  .btn-secondary{border:1px solid var(--border-strong); color:var(--text);}
+  .btn-secondary:hover{border-color:var(--text-dim); background:rgba(255,255,255,0.03);}
+
+  /* manifest card */
+  .manifest-card{
+    background:var(--bg-elevated);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:0 24px 60px -20px rgba(0,0,0,0.5);
+  }
+  .manifest-head{
+    display:flex; align-items:center; gap:8px;
+    padding:12px 16px; border-bottom:1px solid var(--border);
+    background:var(--bg-elevated-2);
+  }
+  .manifest-head span.chip{width:9px; height:9px; border-radius:50%; background:var(--border-strong);}
+  .manifest-head .title{
+    font-family:var(--font-display); font-size:12px; color:var(--text-faint); margin-left:4px;
+  }
+  .manifest-body{padding:22px 20px;}
+  .query-line{
+    font-family:var(--font-display); font-size:13.5px; color:var(--teal);
+    min-height:20px; margin-bottom:20px; word-break:break-word;
+  }
+  .query-line .prompt{color:var(--text-faint);}
+  .query-line .cursor{display:inline-block; width:7px; height:15px; background:var(--teal); margin-left:2px; vertical-align:middle; animation:blink 1s steps(1) infinite;}
+  @keyframes blink{50%{opacity:0;}}
+
+  .manifest-table{border-top:1px dashed var(--border); padding-top:16px;}
+  .manifest-row{
+    display:flex; justify-content:space-between; gap:12px;
+    padding:9px 0; border-bottom:1px solid var(--border);
+    font-size:13.5px;
+  }
+  .manifest-row:last-child{border-bottom:none;}
+  .manifest-row .field{font-family:var(--font-display); color:var(--text-faint); letter-spacing:0.04em;}
+  .manifest-row .value{color:var(--text); font-weight:500; text-align:right;}
+  .status-dot{width:7px; height:7px; border-radius:50%; background:var(--teal); display:inline-block; margin-right:7px; box-shadow:0 0 8px var(--teal);}
+
+  /* ---------- SECTION SHARED ---------- */
+  section{padding:64px 0; border-top:1px solid var(--border); position:relative; z-index:1;}
+  .section-head{margin-bottom:40px;}
+  .section-num{
+    font-family:var(--font-display); font-size:12px; color:var(--accent);
+    letter-spacing:0.12em; text-transform:uppercase; margin-bottom:10px;
+  }
+  .section-title{font-size:clamp(24px,3vw,32px); font-weight:800; letter-spacing:-0.01em;}
+  .section-sub{color:var(--text-dim); margin-top:10px; max-width:640px; font-size:15px;}
+
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity 0.6s ease, transform 0.6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:48px;}
+  .about-grid p{color:var(--text-dim); font-size:15.5px; margin-bottom:16px;}
+  .about-grid p strong{color:var(--text); font-weight:600;}
+  .skill-group{margin-bottom:22px;}
+  .skill-group h4{
+    font-family:var(--font-display); font-size:11.5px; color:var(--text-faint);
+    text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;
+  }
+  .tag-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    font-family:var(--font-display); font-size:12.5px; padding:6px 11px;
+    border:1px solid var(--border-strong); border-radius:5px; color:var(--text-dim);
+    background:rgba(255,255,255,0.02);
+  }
+
+  /* ---------- EXPERIENCE ---------- */
+  .exp-item{
+    display:grid; grid-template-columns:150px 1fr; gap:24px;
+    padding:22px 0; border-bottom:1px solid var(--border);
+  }
+  .exp-item:last-child{border-bottom:none;}
+  .exp-date{font-family:var(--font-display); font-size:12.5px; color:var(--text-faint); padding-top:2px;}
+  .exp-date .current{color:var(--teal);}
+  .exp-role{font-size:16.5px; font-weight:700; margin-bottom:3px;}
+  .exp-company{font-size:13.5px; color:var(--accent); margin-bottom:10px; font-family:var(--font-display);}
+  .exp-desc{color:var(--text-dim); font-size:14.5px; max-width:640px;}
+
+  /* ---------- PROJECTS ---------- */
+  .project-featured{
+    background:var(--bg-elevated);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    overflow:hidden;
+    margin-bottom:28px;
+  }
+  .project-featured img{width:100%; display:block; border-bottom:1px solid var(--border);}
+  .project-featured-body{padding:32px;}
+  .project-tag{
+    display:inline-block; font-family:var(--font-display); font-size:11px;
+    color:var(--accent); background:var(--accent-soft); padding:4px 10px;
+    border-radius:4px; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:14px;
+  }
+  .project-featured h3{font-size:24px; font-weight:800; margin-bottom:10px;}
+  .project-featured p.summary{color:var(--text-dim); font-size:15px; margin-bottom:18px; max-width:680px;}
+  .stack-row{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px;}
+  .stack-chip{
+    font-family:var(--font-display); font-size:12px; color:var(--secondary);
+    border:1px solid var(--border-strong); padding:5px 10px; border-radius:5px;
+  }
+  .insight-list{list-style:none; margin-bottom:24px;}
+  .insight-list li{
+    display:flex; gap:10px; font-size:14px; color:var(--text-dim); padding:6px 0;
+  }
+  .insight-list li::before{content:"→"; color:var(--teal); font-family:var(--font-display); flex-shrink:0;}
+
+  .gallery-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-bottom:26px;
+  }
+  .gallery-item{
+    display:block; position:relative; border:1px solid var(--border); border-radius:8px;
+    overflow:hidden; background:var(--bg-elevated-2); transition:border-color 0.2s ease, transform 0.2s ease;
+  }
+  .gallery-item:hover{border-color:var(--accent); transform:translateY(-2px);}
+  .gallery-item img{
+    width:100%; height:120px; object-fit:cover; object-position:top; display:block;
+    border-bottom:1px solid var(--border);
+  }
+  .gallery-item span{
+    display:block; font-family:var(--font-display); font-size:11px; color:var(--text-dim);
+    padding:8px 10px; letter-spacing:0.02em;
+  }
+  .project-links{display:flex; gap:14px; flex-wrap:wrap;}
+  .project-link{
+    font-family:var(--font-display); font-size:13px; color:var(--text);
+    border-bottom:1px solid var(--border-strong); padding-bottom:2px; transition:all 0.2s ease;
+  }
+  .project-link:hover{color:var(--accent); border-color:var(--accent);}
+
+  .project-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  .project-card{
+    background:var(--bg-elevated); border:1px solid var(--border); border-radius:var(--radius);
+    padding:24px; transition:border-color 0.2s ease, transform 0.2s ease;
+  }
+  .project-card:hover{border-color:var(--border-strong); transform:translateY(-2px);}
+  .project-card h4{font-size:17px; font-weight:700; margin-bottom:8px;}
+  .project-card p{color:var(--text-dim); font-size:13.8px; margin-bottom:14px;}
+  .project-card .stack-row{margin-bottom:0;}
+
+  /* ---------- CERTS ---------- */
+  .cert-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:14px;}
+  .cert-item{
+    display:flex; align-items:baseline; gap:12px; padding:16px 18px;
+    border:1px solid var(--border); border-radius:8px; background:var(--bg-elevated);
+  }
+  .cert-year{font-family:var(--font-display); font-size:12px; color:var(--accent); flex-shrink:0;}
+  .cert-name{font-size:14px; color:var(--text);}
+  .cert-issuer{font-size:12.5px; color:var(--text-faint); display:block; margin-top:2px;}
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  .contact-section{
+    padding:80px 0; text-align:center; border-top:1px solid var(--border);
+  }
+  .contact-section .section-num{justify-content:center; display:flex;}
+  .contact-section h2{font-size:clamp(26px,4vw,38px); font-weight:800; margin-bottom:16px; letter-spacing:-0.01em;}
+  .contact-section p{color:var(--text-dim); max-width:480px; margin:0 auto 32px; font-size:15.5px;}
+  .contact-links{display:flex; justify-content:center; gap:16px; flex-wrap:wrap;}
+
+  footer{
+    border-top:1px solid var(--border); padding:26px 0; text-align:center;
+  }
+  footer p{font-family:var(--font-display); font-size:12px; color:var(--text-faint);}
+  footer p a{color:var(--text-dim);}
+  footer p a:hover{color:var(--accent);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:860px){
+    .hero{grid-template-columns:1fr; padding-top:56px;}
+    .about-grid{grid-template-columns:1fr;}
+    .project-grid{grid-template-columns:1fr;}
+    .cert-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(2, 1fr);}
+    .nav-links{display:none;}
+    .nav-cta{display:none;}
+  }
+  @media (max-width:560px){
+    .exp-item{grid-template-columns:1fr; gap:6px;}
+    .wrap{padding:0 20px;}
+    .manifest-row{flex-direction:column; gap:2px;}
+    .manifest-row .value{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo"><span class="dot"></span>M. EL KHAIR</a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="mailto:mohamed.elkhair87@gmail.com">Get in touch</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+    <section class="hero" style="border-top:none; padding-bottom:56px;">
+      <div>
+        <div class="eyebrow">Houston, TX — Open to opportunities</div>
+        <h1>Driving trucks by day. <span class="hl">Building a data career by night.</span></h1>
+        <p class="lede">I spent years managing geophysical data for oil &amp; gas and working hands-on in logistics
+        and trucking operations. Today I drive long-haul routes — and use the hours in between to build the SQL,
+        Python, and data engineering skills for the career I'm moving toward, one certification and one project
+        at a time.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">View projects</a>
+          <a class="btn btn-secondary" href="https://github.com/Simohjc" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/mohamed-elkhair/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+      </div>
+
+      <div class="manifest-card">
+        <div class="manifest-head">
+          <span class="chip"></span><span class="chip"></span><span class="chip"></span>
+          <span class="title">candidate_profile.sql</span>
+        </div>
+        <div class="manifest-body">
+          <div class="query-line" id="typedQuery"><span class="prompt">--</span> <span id="typedText"></span><span class="cursor"></span></div>
+          <div class="manifest-table">
+            <div class="manifest-row"><span class="field">NAME</span><span class="value">Mohamed El Khair</span></div>
+            <div class="manifest-row"><span class="field">CURRENT</span><span class="value">Truck Driver</span></div>
+            <div class="manifest-row"><span class="field">BACKGROUND</span><span class="value">Oil &amp; Gas Data Mgmt</span></div>
+            <div class="manifest-row"><span class="field">TARGET</span><span class="value">Data Analyst / Engineer</span></div>
+            <div class="manifest-row"><span class="field">STACK</span><span class="value">SQL · Python · Docker</span></div>
+            <div class="manifest-row"><span class="field">STATUS</span><span class="value"><span class="status-dot"></span>Actively building</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-num">01 / About</div>
+        <div class="section-title">My Path</div>
+      </div>
+      <div class="about-grid reveal">
+        <div>
+          <p><span class="mono" style="color:var(--accent); font-size:12px; letter-spacing:0.08em;">WHERE I STARTED</span><br>
+          I spent years as a <strong>Computer &amp; Data Management Specialist at Katalyst Data Management</strong>,
+          managing and quality-checking large volumes of geophysical and seismic data for oil &amp; gas clients —
+          work that's directly analogous to production data pipeline validation. Before that, I worked hands-on in
+          logistics and trucking operations, which gave me a close-up view of how messy operational data really is:
+          load tracking, dispatch records, route data.</p>
+          <p><span class="mono" style="color:var(--accent); font-size:12px; letter-spacing:0.08em;">WHERE I AM NOW</span><br>
+          I currently drive trucks for a living. It's not a detour from data — it's where the motivation comes from.
+          I spend my hours on the road thinking through the same operational problems I used to manage on paper:
+          load data, dispatch inefficiencies, route patterns. In the time around driving, I've earned certifications
+          in data engineering, SQL, and cybersecurity, and I've started building real SQL and Python projects — like
+          the Walmart sales analysis below — to turn that instinct into a practiced skill.</p>
+          <p><span class="mono" style="color:var(--accent); font-size:12px; letter-spacing:0.08em;">WHERE I'M HEADED</span><br>
+          I'm working toward <strong>data analyst and junior data engineering roles</strong> in Houston's energy,
+          logistics, and supply chain sectors — industries I already understand from the inside, and now want to
+          understand through the data.</p>
+        </div>
+        <div>
+          <div class="skill-group">
+            <h4>Data &amp; Analytics</h4>
+            <div class="tag-row">
+              <span class="tag">SQL / PostgreSQL</span>
+              <span class="tag">Python (pandas)</span>
+              <span class="tag">Excel</span>
+              <span class="tag">Power BI — in progress</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h4>Data Engineering</h4>
+            <div class="tag-row">
+              <span class="tag">ETL Pipelines</span>
+              <span class="tag">Data Quality Control</span>
+              <span class="tag">Data Migration</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Git</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h4>Development</h4>
+            <div class="tag-row">
+              <span class="tag">JavaScript</span>
+              <span class="tag">React</span>
+              <span class="tag">HTML / CSS</span>
+              <span class="tag">VS Code</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h4>Domain Expertise</h4>
+            <div class="tag-row">
+              <span class="tag">Logistics &amp; Supply Chain</span>
+              <span class="tag">Trucking / Dispatch</span>
+              <span class="tag">Oil &amp; Gas Data Mgmt</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-num">02 / Experience</div>
+        <div class="section-title">Work History</div>
+      </div>
+      <div class="reveal">
+        <div class="exp-item">
+          <div class="exp-date"><span class="current">Present</span></div>
+          <div>
+            <div class="exp-role">Truck Driver</div>
+            <div class="exp-company">Houston, TX</div>
+            <div class="exp-desc">Driving long-haul routes while building a data analyst / data engineering skill
+            set on the side — completing certifications and hands-on SQL and Python projects between routes.</div>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-date">Jan 2023 — <span class="mono" style="color:var(--text-faint);">Oct 2025</span></div>
+          <div>
+            <div class="exp-role">Computer &amp; Data Management Specialist</div>
+            <div class="exp-company">Katalyst Data Management, Houston, TX</div>
+            <div class="exp-desc">Managed and maintained large volumes of geophysical and seismic data for oil &amp; gas
+            clients, ensuring data integrity across enterprise systems. Performed data quality control, verification,
+            and cleanup, and collaborated with cross-functional teams on data loading, format conversion, and
+            migration projects.</div>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-date">Jan 2022 — Jan 2023</div>
+          <div>
+            <div class="exp-role">Software Developer</div>
+            <div class="exp-company">Freelance, Houston, TX</div>
+            <div class="exp-desc">Designed and built responsive web applications using HTML, CSS, JavaScript, and
+            React, with a focus on clean code and data-driven UI components.</div>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-date">May 2022 — Dec 2022</div>
+          <div>
+            <div class="exp-role">IT Operations Support</div>
+            <div class="exp-company">McDonald's Office, Houston, TX</div>
+            <div class="exp-desc">Maintained network infrastructure and managed technology systems across
+            locations, ensuring uptime and timely issue resolution.</div>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-date">Dec 2021 — May 2022</div>
+          <div>
+            <div class="exp-role">Technical Support Specialist</div>
+            <div class="exp-company">CSAT Solution, Houston, TX</div>
+            <div class="exp-desc">Diagnosed and resolved hardware, software, and connectivity issues for
+            enterprise clients, developing systematic troubleshooting skills applicable to data infrastructure
+            support.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-num">03 / Projects</div>
+        <div class="section-title">Selected Work</div>
+        <p class="section-sub">SQL, Python, and data pipeline projects — built to practice turning raw datasets
+        into answers a business could actually use.</p>
+      </div>
+
+      <div class="project-featured reveal">
+        <div class="project-featured-body">
+          <span class="project-tag">Featured Project — My First End-to-End SQL Portfolio Project</span>
+          <h3>Walmart Sales Data Analysis</h3>
+          <p class="summary">A complete SQL portfolio project analyzing Walmart sales data with PostgreSQL to
+          uncover real business insights. This one pushed me through the full analytics process — understanding
+          a messy real-world dataset, writing the SQL to answer specific business questions, and communicating
+          the results in a professional write-up rather than just dumping query output.</p>
+
+          <div class="stack-row">
+            <span class="stack-chip">PostgreSQL</span>
+            <span class="stack-chip">SQL</span>
+            <span class="stack-chip">Window Functions</span>
+            <span class="stack-chip">DENSE_RANK / LAG</span>
+            <span class="stack-chip">Aggregate Functions</span>
+            <span class="stack-chip">CASE Statements</span>
+          </div>
+
+          <h4 style="font-family:var(--font-display); font-size:12px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px;">What I Explored</h4>
+          <ul class="insight-list">
+            <li>Yearly sales ranking across stores using window functions</li>
+            <li>Daily and weekly sales aggregation</li>
+            <li>Highest-performing sales weeks by month</li>
+            <li>Yearly sales highs and lows</li>
+            <li>Monthly sales volatility analysis</li>
+            <li>Holiday vs. non-holiday sales comparison</li>
+            <li>Largest week-over-week sales drops</li>
+            <li>Business insights drawn from retail sales trends</li>
+          </ul>
+
+          <div class="gallery-grid">
+            <a class="gallery-item" href="img/query1.png" target="_blank" rel="noopener">
+              <img src="img/query1.png" alt="Query result: yearly sales ranked with a window function">
+              <span>Yearly ranking</span>
+            </a>
+            <a class="gallery-item" href="img/query2.png" target="_blank" rel="noopener">
+              <img src="img/query2.png" alt="Query result: top 3 highest sales months">
+              <span>Peak months</span>
+            </a>
+            <a class="gallery-item" href="img/query3.png" target="_blank" rel="noopener">
+              <img src="img/query3.png" alt="Query result: top 5 and bottom 5 stores by total sales">
+              <span>Top / bottom stores</span>
+            </a>
+            <a class="gallery-item" href="img/query4.png" target="_blank" rel="noopener">
+              <img src="img/query4.png" alt="Query result: holiday vs non-holiday average sales">
+              <span>Holiday lift</span>
+            </a>
+            <a class="gallery-item" href="img/query5.png" target="_blank" rel="noopener">
+              <img src="img/query5.png" alt="Query result: largest week-over-week sales drop using LAG">
+              <span>Largest drop</span>
+            </a>
+            <a class="gallery-item" href="img/query6.png" target="_blank" rel="noopener">
+              <img src="img/query6.png" alt="Query result: 4-week rolling average per store">
+              <span>Rolling average</span>
+            </a>
+          </div>
+
+          <div class="project-links">
+            <a class="project-link" href="https://simohjc.github.io/walmart_data_analysis_project/" target="_blank" rel="noopener">Live Project ↗</a>
+            <a class="project-link" href="https://github.com/Simohjc/walmart_data_analysis_project" target="_blank" rel="noopener">GitHub Repository ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-grid">
+        <div class="project-card">
+          <h4>Load Tracking &amp; Analytics Application</h4>
+          <p>A full operational data tracker for logging trucking loads, miles, earnings, detention, and
+          layover pay — built to solve a real dispatch problem. Includes interactive progress charts and a
+          persistent archive for historical analysis.</p>
+          <div class="stack-row">
+            <span class="stack-chip">HTML/JS</span>
+            <span class="stack-chip">Chart.js</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <h4>SQL Logistics Analytics Practice</h4>
+          <p>A local PostgreSQL environment via Docker for practicing analytical SQL against a 14-table
+          logistics dataset — drivers, trucks, trips, loads, and routes — with joins and operational KPI
+          queries.</p>
+          <div class="stack-row">
+            <span class="stack-chip">PostgreSQL</span>
+            <span class="stack-chip">Docker</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-num">04 / Certifications</div>
+        <div class="section-title">Continued Learning</div>
+      </div>
+      <div class="cert-grid reveal">
+        <div class="cert-item">
+          <span class="cert-year mono">2024</span>
+          <div><span class="cert-name">Associate Data Engineer Certificate</span><span class="cert-issuer">DataCamp</span></div>
+        </div>
+        <div class="cert-item">
+          <span class="cert-year mono">2024</span>
+          <div><span class="cert-name">Data Analytics with SQL Certificate</span><span class="cert-issuer">DataCamp</span></div>
+        </div>
+        <div class="cert-item">
+          <span class="cert-year mono">2025</span>
+          <div><span class="cert-name">Google Cybersecurity Professional Certificate</span><span class="cert-issuer">Google / Coursera</span></div>
+        </div>
+        <div class="cert-item">
+          <span class="cert-year mono">2024</span>
+          <div><span class="cert-name">IT Support Professional Certificate</span><span class="cert-issuer">Google / Coursera</span></div>
+        </div>
+        <div class="cert-item">
+          <span class="cert-year mono">2025</span>
+          <div><span class="cert-name">Pre-Security Certificate</span><span class="cert-issuer">TryHackMe</span></div>
+        </div>
+        <div class="cert-item">
+          <span class="cert-year mono">2025</span>
+          <div><span class="cert-name">Programming with HTML5, CSS3 &amp; JavaScript</span><span class="cert-issuer">Scrimba</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <div class="wrap">
+      <div class="section-num mono">05 / Contact</div>
+      <h2>Let's talk about your data.</h2>
+      <p>Open to data analyst and junior data engineering roles across Houston's energy, logistics,
+      and supply chain sectors — happy to talk about a specific role or just compare notes on SQL.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:mohamed.elkhair87@gmail.com">mohamed.elkhair87@gmail.com</a>
+        <a class="btn btn-secondary" href="https://www.linkedin.com/in/mohamed-elkhair/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn btn-secondary" href="https://github.com/Simohjc" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn btn-secondary" href="tel:+18325884481">(832) 588-4481</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Built by <a href="https://github.com/Simohjc" target="_blank" rel="noopener">Mohamed El Khair</a> · Houston, TX · Updated 2026</p>
+</footer>
+
+<script>
+  // Typing effect for the hero manifest query line
+  (function(){
+    var text = "SELECT next_role FROM career WHERE current = 'truck_driver';";
+    var el = document.getElementById('typedText');
+    if(!el) return;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduced){ el.textContent = text; return; }
+    var i = 0;
+    function type(){
+      if(i <= text.length){
+        el.textContent = text.slice(0, i);
+        i++;
+        setTimeout(type, 32);
+      }
+    }
+    type();
+  })();
+
+  // Scroll reveal
+  (function(){
+    var items = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){
+      items.forEach(function(el){ el.classList.add('in'); });
+      return;
+    }
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12});
+    items.forEach(function(el){ obs.observe(el); });
+  })();
+</script>
+
+</body>
+</html>
