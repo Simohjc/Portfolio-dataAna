@@ -60,6 +60,36 @@ https://github.com/Simohjc/walmart_data_analysis_project
 
 ---
 
+## Google Trends Data Cleaning with PostgreSQL
+
+## Project Overview
+
+This project demonstrates a complete SQL data cleaning workflow using PostgreSQL.
+
+The dataset consists of multiple Google Trends categories collected separately and combined into a single analytical dataset.
+
+The objective was to identify data quality issues, standardize the data, convert text fields into usable formats, and prepare the dataset for analysis.
+
+---
+
+# Tools Used
+
+- PostgreSQL
+- pgAdmin 4
+- SQL
+- Microsoft Excel (validation)
+
+- ### Project Links
+
+🌐 Live Project
+
+ https://simohjc.github.io/Google-Trends-Data-Cleaning-with-
+
+💻 GitHub Repository
+
+https://github.com/Simohjc/Google-Trends-Data-Cleaning-with-PostgreSQL
+---
+
 # Skills
 
 ### Databases
