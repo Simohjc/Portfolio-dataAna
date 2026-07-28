@@ -528,30 +528,19 @@
           </ul>
 
           <div class="gallery-grid">
-            <a class="gallery-item" href="query1.png" target="_blank" rel="noopener">
-              <img src="query1.png" alt="Query result: yearly sales ranked with a window function">
+            <a class="gallery-item" href="img/query1.png" target="_blank" rel="noopener">
+              <img src="img/query1.png" alt="Query result: yearly sales ranked with a window function">
               <span>Yearly ranking</span>
             </a>
-            <a class="gallery-item" href="query2.png" target="_blank" rel="noopener">
-              <img src="query2.png" alt="Query result: top 3 highest sales months">
+            <a class="gallery-item" href="img/query2.png" target="_blank" rel="noopener">
+              <img src="img/query2.png" alt="Query result: top 3 highest sales months">
               <span>Peak months</span>
             </a>
-            <a class="gallery-item" href="query3.png" target="_blank" rel="noopener">
-              <img src="query3.png" alt="Query result: top 5 and bottom 5 stores by total sales">
+            <a class="gallery-item" href="img/query3.png" target="_blank" rel="noopener">
+              <img src="img/query3.png" alt="Query result: top 5 and bottom 5 stores by total sales">
               <span>Top / bottom stores</span>
             </a>
-            <a class="gallery-item" href="query4.png" target="_blank" rel="noopener">
-              <img src="query4.png" alt="Query result: holiday vs non-holiday average sales">
-              <span>Holiday lift</span>
-            </a>
-            <a class="gallery-item" href="query5.png" target="_blank" rel="noopener">
-              <img src="query5.png" alt="Query result: largest week-over-week sales drop using LAG">
-              <span>Largest drop</span>
-            </a>
-            <a class="gallery-item" href="query6.png" target="_blank" rel="noopener">
-              <img src="query6.png" alt="Query result: 4-week rolling average per store">
-              <span>Rolling average</span>
-            </a>
+            
           </div>
 
           <div class="project-links">
@@ -561,28 +550,95 @@
         </div>
       </div>
 
-      <div class="project-grid">
-        <div class="project-card">
-          <h4>Load Tracking &amp; Analytics Application</h4>
-          <p>A full operational data tracker for logging trucking loads, miles, earnings, detention, and
-          layover pay — built to solve a real dispatch problem. Includes interactive progress charts and a
-          persistent archive for historical analysis.</p>
-          <div class="stack-row">
-            <span class="stack-chip">HTML/JS</span>
-            <span class="stack-chip">Chart.js</span>
-          </div>
-        </div>
-        <div class="project-card">
-          <h4>SQL Logistics Analytics Practice</h4>
-          <p>A local PostgreSQL environment via Docker for practicing analytical SQL against a 14-table
-          logistics dataset — drivers, trucks, trips, loads, and routes — with joins and operational KPI
-          queries.</p>
-          <div class="stack-row">
-            <span class="stack-chip">PostgreSQL</span>
-            <span class="stack-chip">Docker</span>
-          </div>
-        </div>
-      </div>
+      <div class="project-featured reveal">
+  <div class="project-featured-body">
+    <span class="project-tag">Featured Project — My First End-to-End SQL Data Cleaning Project</span>
+
+    <h3>Google Trends Data Cleaning with PostgreSQL</h3>
+
+    <p class="summary">
+      A complete SQL data cleaning portfolio project using PostgreSQL to transform raw Google Trends data
+      into a clean, analysis-ready dataset. This project challenged me to work through the entire data
+      preparation process — combining multiple datasets, identifying data quality issues, standardizing
+      inconsistent values, converting messy text dates into timestamps, validating duplicates, handling
+      missing values, and documenting every cleaning step in a professional workflow.
+    </p>
+
+    <div class="stack-row">
+      <span class="stack-chip">PostgreSQL</span>
+      <span class="stack-chip">SQL</span>
+      <span class="stack-chip">Data Cleaning</span>
+      <span class="stack-chip">UNION ALL</span>
+      <span class="stack-chip">Views</span>
+      <span class="stack-chip">ROW_NUMBER()</span>
+      <span class="stack-chip">TO_TIMESTAMP()</span>
+      <span class="stack-chip">REGEXP_REPLACE()</span>
+      <span class="stack-chip">TRIM()</span>
+      <span class="stack-chip">REPLACE()</span>
+    </div>
+
+    <h4 style="font-family:var(--font-display); font-size:12px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px;">
+      What I Explored
+    </h4>
+
+    <ul class="insight-list">
+      <li>Combined 19 Google Trends datasets into one SQL view using <strong>UNION ALL</strong></li>
+      <li>Standardized inconsistent text values using <strong>TRIM()</strong> and <strong>REPLACE()</strong></li>
+      <li>Converted messy date strings into PostgreSQL <strong>TIMESTAMP</strong> values</li>
+      <li>Created new timestamp columns for accurate time-based analysis</li>
+      <li>Cleaned search volume values (e.g., 2K+ → 2000)</li>
+      <li>Validated duplicate records using <strong>ROW_NUMBER()</strong> and <strong>PARTITION BY</strong></li>
+      <li>Performed missing value analysis and documented NULL records</li>
+      <li>Added source tracking for every record after combining all datasets</li>
+      <li>Prepared a clean, analysis-ready dataset for future reporting and dashboards</li>
+    </ul>
+
+    <div class="gallery-grid">
+
+      <a class="gallery-item" href="img/google1.png" target="_blank" rel="noopener">
+        <img src="img/google1.png" alt="Original Google Trends dataset">
+        <span>Original Dataset</span>
+      </a>
+
+      <a class="gallery-item" href="img/google2.png" target="_blank" rel="noopener">
+        <img src="img/google2.png" alt="Combined SQL view">
+        <span>Combined View</span>
+      </a>
+
+      <a class="gallery-item" href="img/google3.png" target="_blank" rel="noopener">
+        <img src="img/google3.png" alt="Duplicate detection using ROW_NUMBER">
+        <span>Duplicate Check</span>
+      </a>
+
+      <a class="gallery-item" href="img/google4.png" target="_blank" rel="noopener">
+        <img src="img/google4.png" alt="Data standardization">
+        <span>Data Cleaning</span>
+      </a>
+
+      <a class="gallery-item" href="img/google5.png" target="_blank" rel="noopener">
+        <img src="img/google5.png" alt="Timestamp conversion">
+        <span>Date Conversion</span>
+      </a>
+
+      <a class="gallery-item" href="img/google6.png" target="_blank" rel="noopener">
+        <img src="img/google6.png" alt="Final cleaned dataset">
+        <span>Final Dataset</span>
+      </a>
+
+    </div>
+
+    <div class="project-links">
+      <a class="project-link" href=" https://simohjc.github.io/Google-Trends-Data-Cleaning-with-" target="_blank" rel="noopener">
+        Live Project ↗
+      </a>
+
+      <a class="project-link" href="https://github.com/Simohjc/Google-Trends-Data-Cleaning-with-PostgreSQL" target="_blank" rel="noopener">
+        GitHub Repository ↗
+      </a>
+    </div>
+
+  </div>
+</div>
     </div>
   </section>
 
@@ -681,3 +737,4 @@
 
 </body>
 </html>
+
