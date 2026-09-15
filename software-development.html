@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Software Development Projects — Mohamed El Khair</title>
+<meta name="description" content="Full-stack and app development projects by Mohamed El Khair — Python, Streamlit, and web applications.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="dot"></span>M. EL KHAIR</a>
+    <nav class="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#certifications">Certifications</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="index.html">← Back to Portfolio</a>
+  </div>
+</header>
+
+<main>
+  <section style="border-top:none; padding-bottom:24px;">
+    <div class="wrap">
+      <a class="back-link" href="index.html#projects">← All projects</a>
+      <div class="section-head reveal" style="margin-bottom:16px;">
+        <div class="section-num">Software Development</div>
+        <div class="section-title">Full-Stack &amp; App Projects</div>
+        <p class="section-sub">Python and Streamlit applications built end-to-end — from calculation logic
+        to a live, deployed product used by a real business.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:none;">
+    <div class="wrap">
+
+      <!-- =========================================================
+           UBOX SOLUTIONS — LOAD PROFIT ANALYZER
+      ========================================================= -->
+
+      <div class="project-featured reveal">
+        <div class="project-featured-body">
+          <span class="project-tag">Featured Project — My First End-to-End Python Web App</span>
+          <h3>UBOX Solutions — Load Profit Analyzer</h3>
+          <p class="summary">A Python and Streamlit web app I built for UBOX Solutions, a Houston-based cargo
+          van delivery and last-mile logistics company, to evaluate whether a load is actually worth accepting.
+          It takes load pay, mileage, fuel price, driver pay, tolls, and maintenance cost as input, then instantly
+          calculates net profit, profit per mile, operating margin, and deadhead efficiency — turning a decision
+          that used to be napkin math into a clear, data-backed call. This was my first project taken all the way
+          from raw calculation logic to a live, publicly deployed application.</p>
+
+          <div class="stack-row">
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">Streamlit</span>
+            <span class="stack-chip">Pandas</span>
+            <span class="stack-chip">Session State</span>
+            <span class="stack-chip">Data Validation</span>
+            <span class="stack-chip">CSS Styling</span>
+            <span class="stack-chip">CSV Export</span>
+            <span class="stack-chip">Cloud Deployment</span>
+          </div>
+
+          <h4 style="font-family:var(--font-display); font-size:12px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px;">What I Built</h4>
+          <ul class="insight-list">
+            <li>Load profitability engine calculating net profit, profit per mile, operating margin, and deadhead percentage from real trucking cost inputs</li>
+            <li>Automatic load rating (Great / Acceptable / Low Profit / Poor) and deadhead efficiency rating based on the calculated results</li>
+            <li>Session-based load history using Streamlit's session state, with input validation and duplicate-submission protection</li>
+            <li>Color-coded, horizontally scrollable history table with one-click CSV export for record-keeping</li>
+            <li>Custom-branded UI — logo, color theme, and styled metric cards — built entirely with scoped CSS</li>
+            <li>Deployed live on Streamlit Community Cloud so the tool is actually usable by the business, not just running locally</li>
+          </ul>
+
+          <div class="project-links">
+            <a class="project-link" href="https://ubox-solutions-load-profit-analyzer-mfdxvubiu267xohphbg4ma.streamlit.app/" target="_blank" rel="noopener">Live Project ↗</a>
+            <a class="project-link" href="https://github.com/Simohjc/UBOX-Solutions-Load-Profit-Analyzer" target="_blank" rel="noopener">GitHub Repository ↗</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Built by <a href="https://github.com/Simohjc" target="_blank" rel="noopener">Mohamed El Khair</a> · Houston, TX · Updated 2026</p>
+</footer>
+
+<script>
+  (function(){
+    var items = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){
+      items.forEach(function(el){ el.classList.add('in'); });
+      return;
+    }
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12});
+    items.forEach(function(el){ obs.observe(el); });
+  })();
+</script>
+
+</body>
+</html>
