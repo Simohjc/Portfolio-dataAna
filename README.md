@@ -116,8 +116,7 @@ A complete SQL data cleaning project — combining 19 raw Google Trends datasets
 
 ## 🎓 Certifications
 
-- Associate Data Engineer — DataCamp
-- Data Analytics with SQL — DataCamp
+- SQL Associate — DataCamp
 - Google Cybersecurity Professional Certificate — Google
 - Google IT Support Professional Certificate — Google
 - Programming with HTML, CSS & JavaScript — Scrimba
