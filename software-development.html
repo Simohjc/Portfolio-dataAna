@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
- 
+
 <header class="site-nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo"><span class="dot"></span>M. EL KHAIR</a>
@@ -25,7 +25,7 @@
     <a class="nav-cta" href="index.html">← Back to Portfolio</a>
   </div>
 </header>
- 
+
 <main>
   <section style="border-top:none; padding-bottom:24px;">
     <div class="wrap">
@@ -38,46 +38,66 @@
       </div>
     </div>
   </section>
- 
+
   <section style="border-top:none;">
     <div class="wrap">
- 
+
       <!-- =========================================================
            UBOX SOLUTIONS — LOAD PROFIT ANALYZER
       ========================================================= -->
- 
+
       <div class="project-featured reveal">
         <div class="project-featured-body">
-          <span class="project-tag">Featured Project — My First End-to-End Python Web App</span>
+          <span class="project-tag">Featured Project — Full-Stack Python App with Cloud Database</span>
           <h3>UBOX Solutions — Load Profit Analyzer</h3>
           <p class="summary">A Python and Streamlit web app I built for UBOX Solutions, a Houston-based cargo
           van delivery and last-mile logistics company, to evaluate whether a load is actually worth accepting.
           It takes load pay, mileage, fuel price, driver pay, tolls, and maintenance cost as input, then instantly
           calculates net profit, profit per mile, operating margin, and deadhead efficiency — turning a decision
-          that used to be napkin math into a clear, data-backed call. This was my first project taken all the way
-          from raw calculation logic to a live, publicly deployed application.</p>
- 
+          that used to be napkin math into a clear, data-backed call. What started as a simple calculator grew
+          into a full-stack application: every submitted load is now permanently saved to a cloud PostgreSQL
+          database (Neon), with secure credential management and a proper Git version-control workflow.</p>
+
           <div class="stack-row">
             <span class="stack-chip">Python</span>
             <span class="stack-chip">Streamlit</span>
             <span class="stack-chip">Pandas</span>
-            <span class="stack-chip">Session State</span>
+            <span class="stack-chip">PostgreSQL</span>
+            <span class="stack-chip">Neon</span>
+            <span class="stack-chip">psycopg2</span>
+            <span class="stack-chip">Object-Oriented Programming</span>
+            <span class="stack-chip">Git &amp; GitHub</span>
+            <span class="stack-chip">Streamlit Secrets</span>
             <span class="stack-chip">Data Validation</span>
             <span class="stack-chip">CSS Styling</span>
-            <span class="stack-chip">CSV Export</span>
             <span class="stack-chip">Cloud Deployment</span>
           </div>
- 
+
           <h4 style="font-family:var(--font-display); font-size:12px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px;">What I Built</h4>
           <ul class="insight-list">
             <li>Load profitability engine calculating net profit, profit per mile, operating margin, and deadhead percentage from real trucking cost inputs</li>
             <li>Automatic load rating (Great / Acceptable / Low Profit / Poor) and deadhead efficiency rating based on the calculated results</li>
-            <li>Session-based load history using Streamlit's session state, with input validation and duplicate-submission protection</li>
+            <li>An object-oriented <code>Load</code> class modeling every submitted load, feeding a parameterized SQL insert to prevent SQL injection</li>
+            <li>Persistent cloud database storage on Neon (serverless PostgreSQL), so load history survives restarts and redeployments — not just the browser session</li>
+            <li>Secure credential handling via Streamlit secrets, both locally and in production, so no database password is ever exposed in the public repo</li>
             <li>Color-coded, horizontally scrollable history table with one-click CSV export for record-keeping</li>
             <li>Custom-branded UI — logo, color theme, and styled metric cards — built entirely with scoped CSS</li>
-            <li>Deployed live on Streamlit Community Cloud so the tool is actually usable by the business, not just running locally</li>
+            <li>Deployed live on Streamlit Community Cloud, with a full Git/GitHub workflow for version control</li>
           </ul>
- 
+
+          <h4 style="font-family:var(--font-display); font-size:12px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.1em; margin:20px 0 12px;">Project Evolution</h4>
+          <ul class="insight-list">
+            <li>Started as a Streamlit form with the core profitability calculations</li>
+            <li>Added branding, styled metric cards, and a color-coded, scrollable history table</li>
+            <li>Introduced session-based history with duplicate-entry prevention, validation, and CSV export</li>
+            <li>Deployed live on Streamlit Community Cloud</li>
+            <li>Refactored the data model around an object-oriented <code>Load</code> class</li>
+            <li>Connected the app to PostgreSQL with psycopg2 for permanent data persistence</li>
+            <li>Migrated the database to Neon (cloud PostgreSQL) so the live deployed app could reach it</li>
+            <li>Replaced hardcoded credentials with Streamlit secrets for secure, production-safe configuration</li>
+            <li>Set up Git and GitHub version control from the command line to manage ongoing changes</li>
+          </ul>
+
           <div class="gallery-grid">
             <a class="gallery-item" href="img/ubox1.png" target="_blank" rel="noopener">
               <img src="img/ubox1.png" alt="UBOX Load Profit Analyzer branded UI with Load Information form">
@@ -96,22 +116,22 @@
               <span>Full Analysis View</span>
             </a>
           </div>
- 
+
           <div class="project-links">
             <a class="project-link" href="https://ubox-solutions-load-profit-analyzer-mfdxvubiu267xohphbg4ma.streamlit.app/" target="_blank" rel="noopener">Live Project ↗</a>
             <a class="project-link" href="https://github.com/Simohjc/UBOX-Solutions-Load-Profit-Analyzer" target="_blank" rel="noopener">GitHub Repository ↗</a>
           </div>
         </div>
       </div>
- 
+
     </div>
   </section>
 </main>
- 
+
 <footer>
   <p>Built by <a href="https://github.com/Simohjc" target="_blank" rel="noopener">Mohamed El Khair</a> · Houston, TX · Updated 2026</p>
 </footer>
- 
+
 <script>
   (function(){
     var items = document.querySelectorAll('.reveal');
@@ -130,6 +150,6 @@
     items.forEach(function(el){ obs.observe(el); });
   })();
 </script>
- 
+
 </body>
 </html>
